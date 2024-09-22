@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from '@/config/axios-customize';
+import axios from '@/config/axios-customize'; 
 
 // First, create the thunk
 export const fetchAccount = createAsyncThunk(
@@ -7,8 +7,33 @@ export const fetchAccount = createAsyncThunk(
     async () => {
         const response = await axios.get('/api/v1/auth/account')
         return response.data
+
     }
 )
+
+interface IState {
+    isAuthenticated: boolean;
+    isLoading: boolean;
+    isRefreshToken: boolean;
+    errorRefreshToken: string;
+    user: {
+        id: string;
+        email: string;
+        name: string;
+        role: {
+            id?: string;
+            name?: string;
+            permissions?: {
+                id: string;
+                name: string;
+                apiPath: string;
+                method: string;
+                module: string;
+            }[]
+        }
+    };
+    activeMenu: string;
+}
 
 const initialState = {
     isAuthenticated: false,
@@ -33,13 +58,17 @@ export const accountSlide = createSlice({
         setActiveMenu: (state, action) => {
             state.activeMenu = action.payload;
         },
+
+        // thiếp lập thông tin người dùng đăng nhập 
         setUserLoginInfo: (state, action) => {
-            state.isAuthenticated = true;
-            state.isLoading = false;
+            state.isAuthenticated = true;     // người dùng đã xác thực 
+            state.isLoading = false;  // Tắt trạng thái tải dữ liệu (nếu có).  
             state.user = {
-                ...state.user, ...action.payload
+                ...state.user, ...action.payload // cập nhật lại state.user
             }
         },
+
+        // xử lý đăng xuất người dùng
         setLogoutAction: (state, action) => {
             localStorage.removeItem('access_token');
             state.isAuthenticated = false;
@@ -53,6 +82,8 @@ export const accountSlide = createSlice({
         }
 
     },
+
+    
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(fetchAccount.fulfilled, (state, action) => {
