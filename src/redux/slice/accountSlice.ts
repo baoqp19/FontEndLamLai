@@ -6,7 +6,7 @@ export const fetchAccount = createAsyncThunk(
     'account/fetchAccount',
     async () => {
         const response = await axios.get('/api/v1/auth/account')
-        return response.data
+        return response.data;
 
     }
 )

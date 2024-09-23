@@ -23,6 +23,8 @@ export default defineConfig(({ command, mode }) => {
         "@": path.resolve(__dirname, "./src/"),
         components: `${path.resolve(__dirname, "./src/components/")}`,
         styles: `${path.resolve(__dirname, "./src/styles/")}`,
+        config: `${path.resolve(__dirname, "./src/config/")}`,
+        pages: `${path.resolve(__dirname, "./src/pages/")}`,
       },
     },
   }

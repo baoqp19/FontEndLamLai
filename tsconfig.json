@@ -29,6 +29,12 @@
       ],
       "styles/*": [
         "src/styles/*" 
+      ],
+      "config/*": [
+        "src/config/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
       ]
     }
   },
