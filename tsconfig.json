@@ -21,11 +21,14 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
+      "@/*": [         // bằng đầu src
         "./src/*"
       ],
       "components/*": [
         "src/components/*"
+      ],
+      "styles/*": [
+        "src/styles/*" 
       ]
     }
   },
