@@ -2,7 +2,16 @@ import styles from 'styles/auth.module.scss';
 import { Divider, Form, Button, Input, Checkbox } from "antd";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import type { FormProps } from 'antd';
+import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 const LoginPage = () => {
+
+
+    const [isSubmit, setIsSubmit] = useState(false);
+    const dispatch = useAppDispatch();
+
+    const isAuthenticated = useAppSelector((state) => state.account.isAuthenticated);
+    
 
 
     const onFinish: FormProps['onFinish'] = (values) => {
@@ -11,7 +20,8 @@ const LoginPage = () => {
 
     return (
         <div className={styles['login-page']}>
-            <main className={styles.main}>
+            {/* Main bỏ vào không css */}
+            <main className={styles.main}>  
                 <div className={styles.container}>
                     <section className={styles.wrapper}>
                         <div className={styles.heading} >
@@ -39,20 +49,20 @@ const LoginPage = () => {
                                 labelCol={{ span: 24 }}
                                 label="Mật khẩu"
                                 name="password"
-                                rules={[{ required: true, message: 'Mật khẩu không được để trôngs !' }]}
+                                rules={[{ required: true, message: 'Mật khẩu không được để trống!' }]}
                             >
                                 <Input.Password />
                             </Form.Item>
 
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" loading>
-                                    Submit
+                                <Button type="primary" htmlType="submit">
+                                    Đăng nhập
                                 </Button>
                             </Form.Item>
                             <Divider>Or</Divider>
-                            <p>Bạn chưa có tài khoản ư,
+                            <p className={styles['text-normal']}>Bạn chưa có tài khoản ư,
                                 <span>
-                                    {/* <Link> đăng ký</Link> */}
+                                    {/* <Link to='/register'> đăng ký</Link> */}
                                 </span>
                             </p>
                         </Form>
