@@ -10,11 +10,7 @@ import RegisterPage from './page/auth/register';
 ReactDom.createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      {/* <App />
-       */}
-       {/* <LoginPage /> */}
-
-       <RegisterPage />
+       <App />
     </Provider>
   </StrictMode>,
 )

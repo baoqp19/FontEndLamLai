@@ -2,17 +2,31 @@ import { useState } from 'react'
 import './styles/app.module.scss';
 import {
   createBrowserRouter,
-  Outlet,
   RouterProvider,
-  useLocation,
 } from "react-router-dom";
+import LoginPage from './page/auth/login';
+import RegisterPage from './page/auth/register';
 
-function App() {
+
+
+export default function App() {
   const [count, setCount] = useState(0)
 
+  const router = createBrowserRouter([
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+
+    {
+      path: "/register",
+      element: <RegisterPage />,
+    },
+  ])
   return (
-    <h1>Helllo</h1>
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }
 
-export default App

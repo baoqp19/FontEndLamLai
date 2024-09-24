@@ -1,5 +1,5 @@
 import { IBackendRes, ICompany, IAccount, IUser, IModelPaginate, IGetAccount, IJob, IResume, IPermission, IRole, ISkill } from '@/types/backend';
-import axios from '@/config/axios-customize';
+import axios from 'config/axios-customize';
 
 /**
  * 
@@ -70,8 +70,10 @@ export const callFetchCompanyById = (id: string) => {
     return axios.get<IBackendRes<ICompany>>(`/api/v1/companies/${id}`);
 }
 
-
-
+/**
+ * 
+Module Skill
+ */
 export const callCreateSkill = (name: string) => {
     return axios.post<IBackendRes<ISkill>>('/api/v1/skills', { name })
 }

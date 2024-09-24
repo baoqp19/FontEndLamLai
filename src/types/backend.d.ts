@@ -5,9 +5,6 @@ export interface IBackendRes<T> {
     data?: T;
 }
 
-// d: declare
-
-
 
 export interface IModelPaginate<T> {
     meta: {
