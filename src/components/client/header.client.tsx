@@ -8,6 +8,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { callLogout } from '@/config/api';
 import { setLogoutAction } from '@/redux/slice/accountSlice';
 import { isMobile } from 'react-device-detect';
+import ManageAccount from './modal/manage.account';
 
 const Header = () => {
 
@@ -150,10 +151,10 @@ const Header = () => {
             </Drawer>
 
 
-            {/* <ManageAccount
+            <ManageAccount
                 open={openMangeAccount}
                 onClose={setOpenManageAccount}
-            /> */}
+            />
 
 
 
