@@ -47,18 +47,17 @@ const LayoutClient = () => {
 }
 
 export default function App() {
-  
+
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(state => state.account.isLoading);
 
 
   useEffect(() => {
     if (
-      window.location.pathname === '/login'
-      || window.location.pathname === '/register'
-    )
+      window.location.pathname === '/login' || window.location.pathname === '/register'
+    )   // khi người dùng đang ở login và register thì không cần gọi để lấy acccount 
       return;
-    dispatch(fetchAccount())
+    dispatch(fetchAccount())   // vì lấy account thông qua token nên nó sẽ đăng nhập và lưu rồi 
   }, [])
 
   const router = createBrowserRouter([

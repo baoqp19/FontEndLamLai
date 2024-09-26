@@ -17,6 +17,8 @@ export const callFetchAccount = () => {
     return axios.get<IBackendRes<IGetAccount>>('/api/v1/auth/account')
 }
 
+
+
 export const callRefreshToken = () => {
     return axios.get<IBackendRes<IAccount>>('/api/v1/auth/refresh')
 }

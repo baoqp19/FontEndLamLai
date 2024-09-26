@@ -6,6 +6,9 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { callLogin } from '@/config/api';
 import { setUserLoginInfo } from '@/redux/slice/accountSlice';
 
+
+// chức năng login để isAuthencited sang true và chuyển hướng
+
 const LoginPage = () => {
 
 
@@ -23,11 +26,11 @@ const LoginPage = () => {
     const callback = params?.get("callback");  // get('callback') = Mycallback
 
 
-    // useEffect(() => {
-    //     if(isAuthenticated){
-    //         window.location.href = '/'
-    //     }
-    // }, [isAuthenticated])
+    useEffect(() => {
+        if(isAuthenticated){
+            window.location.href = '/'
+        }
+    }, [isAuthenticated])
 
     const onFinish = async (values: any) => {
 
