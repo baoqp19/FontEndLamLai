@@ -7,10 +7,12 @@ import { Modal, Table, Tabs } from 'antd'
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 
+
 interface IProps {
     open: boolean;  // show and hide nên true, false
     onClose: (v: boolean) => void;// bỏ vào các hàm nên void
 }
+
 
 const UserResume = (props: any) => {
     const [listCV, setListCV] = useState<IResume[]>([]);
@@ -133,7 +135,7 @@ const ManageAccount = (props: IProps) => {
                 width={isMobile ? "100%" : "1000px"}
 
             >
-                
+
                 <div style={{ minHeight: 400 }}>
                     <Tabs
                         defaultActiveKey="user-resume"  // active đầu tiền
