@@ -133,12 +133,12 @@ const ManageAccount = (props: IProps) => {
                 width={isMobile ? "100%" : "1000px"}
 
             >
-
+                
                 <div style={{ minHeight: 400 }}>
                     <Tabs
                         defaultActiveKey="user-resume"  // active đầu tiền
                         items={items}
-                        // onChange={onChange}
+                    // onChange={onChange}
                     />
                 </div>
             </Modal>

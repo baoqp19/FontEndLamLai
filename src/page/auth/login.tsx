@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { callLogin } from '@/config/api';
 import { setUserLoginInfo } from '@/redux/slice/accountSlice';
+
 const LoginPage = () => {
 
 
@@ -22,14 +23,14 @@ const LoginPage = () => {
     const callback = params?.get("callback");  // get('callback') = Mycallback
 
 
-    useEffect(() => {
-        if(isAuthenticated){
-            window.location.href = '/'
-        }
-    }, [])
+    // useEffect(() => {
+    //     if(isAuthenticated){
+    //         window.location.href = '/'
+    //     }
+    // }, [isAuthenticated])
 
     const onFinish = async (values: any) => {
-      
+
         const { username, password } = values;
         setIsSubmit(true);
         const res = await callLogin(username, password);
@@ -40,6 +41,7 @@ const LoginPage = () => {
             dispatch(setUserLoginInfo(res.data.user));
             message.success('Đăng nhập thành công');
             window.location.href = callback ? callback : "/";
+
         } else {
             notification.error({
                 message: "Có lỗi xảy ra",

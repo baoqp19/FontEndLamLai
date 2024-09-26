@@ -10,6 +10,8 @@ export const fetchAccount = createAsyncThunk(
     }
 )
 
+
+
 interface IState {
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -63,8 +65,6 @@ export const accountSlide = createSlice({
         setActiveMenu: (state, action) => {
             state.activeMenu = action.payload;
         },
-
-        
         setUserLoginInfo: (state, action) => {
             state.isAuthenticated = true;
             state.isLoading = false;

@@ -13,27 +13,33 @@ import HomePage from './page/home';
 import Header from './components/client/header.client';
 import Footer from './components/client/footer.client';
 import LayoutApp from './components/share/layout.app';
+import ClientJobPage from './page/job';
+import ClientJobDetailPage from './page/job/detail';
+import ClientCompanyPage from './page/company';
+import ClientCompanyDetailPage from './page/company/detail';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { fetchAccount } from './redux/slice/accountSlice';
 
 
 const LayoutClient = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const rootRef = useRef<HTMLDivElement>(null);
- 
+
+  // 1 hàm khi re-render thì lại tạo ra 1 môi trường mới và các giá trị ở trong đó sẽ trở lại ban đầu
+  // useRef sinh ra để vẫn giữ được giá trị sau mỗi lần re-render. luôn có current
   useEffect(() => {
     if (rootRef && rootRef.current) {
       rootRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-
   }, [location]);
+
 
   return (
     <div className='layout-app' ref={rootRef}>
-      {/* <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
       <Header />
       <div className={styles['content-app']}>
-        {/* <Outlet context={[searchTerm, setSearchTerm]} /> */}
-        <Outlet />
+        <Outlet context={[searchTerm, setSearchTerm]} />
       </div>
       <Footer />
     </div>
@@ -41,17 +47,31 @@ const LayoutClient = () => {
 }
 
 export default function App() {
+  
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(state => state.account.isLoading);
 
+
+  useEffect(() => {
+    if (
+      window.location.pathname === '/login'
+      || window.location.pathname === '/register'
+    )
+      return;
+    dispatch(fetchAccount())
+  }, [])
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LayoutApp> <LayoutClient /></LayoutApp>,
+      element: (<LayoutApp><LayoutClient /></LayoutApp>),   // cái này là chung cho cả / và /job, /company
       errorElement: <NotFound />,
       children: [
-        { index: true, element: <HomePage /> },
-        
-
+        { index: true, element: <HomePage /> },     // nhập / thì hiển thị ra 
+        { path: "job", element: <ClientJobPage /> },
+        { path: "job/:id", element: <ClientJobDetailPage /> },
+        { path: "company", element: <ClientCompanyPage /> },
+        { path: "company/:id", element: <ClientCompanyDetailPage /> }
       ],
     },
 

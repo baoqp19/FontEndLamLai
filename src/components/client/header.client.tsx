@@ -10,7 +10,7 @@ import { setLogoutAction } from '@/redux/slice/accountSlice';
 import { isMobile } from 'react-device-detect';
 import ManageAccount from './modal/manage.account';
 
-const Header = () => {
+const Header = (props: any) => {
 
 
     const navivate = useNavigate();
@@ -85,59 +85,58 @@ const Header = () => {
     return (
         <>
 
-        <div className={styles['header-section']}>
-            <div className={styles.container}>
-                {!isMobile ?
-                <div style={{ display: "flex", gap: 30 }} >
-                       <div className={styles['brand']} >
-                            <FaReact onClick={() => navivate('/')} title='Ai thấy thì đẹp trai xinh gái' />
-                        </div>
-                        <div className={styles['top-menu']} >
+            <div className={styles['header-section']}>
+                <div className={styles.container}>
+                    {!isMobile ?
+                        <div style={{ display: "flex", gap: 30 }} >
+                            <div className={styles['brand']} >
+                                <FaReact onClick={() => navivate('/')} title='Ai thấy thì đẹp trai xinh gái' />
+                            </div>
+                            <div className={styles['top-menu']} >
 
-                            {/* display: trang chủ, job, company */}
-                            <ConfigProvider
-                                theme={{
-                                    token: {
-                                        colorPrimary: "#fff",
-                                        colorBgContainer: '#222831',
-                                        colorText: '#a7a7a7',
-                                    }
-                                }}
-                            >
+                                {/* hiển thị: trang chủ, job, company */}
+                                <ConfigProvider
+                                    theme={{
+                                        token: {
+                                            colorPrimary: "#fff",
+                                            colorBgContainer: '#222831',
+                                            colorText: '#a7a7a7',
+                                        }
+                                    }}
+                                >
 
-                                <Menu
-                                    selectedKeys={[current]} // chọn item nào thì có active
-                                    mode='horizontal'  // cho các item nằm ngang
-                                    items={items}
-                                />
-                            </ConfigProvider>
+                                    <Menu
+                                        selectedKeys={[current]} // chọn item nào thì có active
+                                        mode='horizontal'  // cho các item nằm ngang
+                                        items={items}
+                                    />
+                                </ConfigProvider>
 
-                            <div className={styles['extra']} >
-                                {
-                                    isAuthenticated === false
-                                        ?
-                                        <Link to={'/login'} >Đăng nhập</Link>
+                                <div className={styles['extra']}>
+                                    {isAuthenticated === false ?
+                                        <Link to={'/login'}>Đăng Nhập</Link>
                                         :
-                                        <Dropdown  menu={{ items : itemsDropdown }} trigger={['click']} >
+                                        <Dropdown menu={{ items: itemsDropdown }} trigger={['click']}>
                                             <Space style={{ cursor: "pointer" }}>
                                                 <span>Welcome {user?.name}</span>
-                                                <Avatar> {user?.name?.substring(0, 2)?.toUpperCase()}</Avatar>
+                                                <Avatar> {user?.name?.substring(0, 2)?.toUpperCase()} </Avatar>
                                             </Space>
                                         </Dropdown>
-                                }
+                                    }
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    : 
-                    <div className={styles['header-mobile']} >
-                        <span>Your App</span>
-                        <MenuFoldOutlined onClick={() => setOpenMobileMenu(true)} />
-                    </div>
-                 }
+                        :
+                        <div className={styles['header-mobile']} >
+                            <span>Your App</span>
+                            <MenuFoldOutlined onClick={() => setOpenMobileMenu(true)} />
+                        </div>
+                    }
+                </div>
             </div>
-        </div>
 
-        <Drawer title="Chức năng"
+            <Drawer title="Chức năng"
                 placement="right"
                 onClose={() => setOpenMobileMenu(false)}
                 open={openMobileMenu}

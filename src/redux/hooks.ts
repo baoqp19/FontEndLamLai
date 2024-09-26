@@ -1,12 +1,9 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 
-// useAppDispatch sẽ trả về một hàm dispatch với kiểu AppDispatch.
-export const useAppDispatch: () => AppDispatch = useDispatch;  
-
-// TypedUseSelectorHook<RootState> đảm bảo rằng selector function sẽ nhận RootState làm tham số.
+// sử dụng thay useDispatch bằng useSelector 
+export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
 
 
 /*
