@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { callFetchAccount } from '@/config/api';
 
 // First, create the thunk
+// xử lý bất đồng bộ 
 export const fetchAccount = createAsyncThunk(
     'account/fetchAccount',
     async () => {
@@ -104,7 +105,7 @@ export const accountSlide = createSlice({
         builder.addCase(fetchAccount.pending, (state, action) => {
             if (action.payload) {
                 state.isAuthenticated = false;
-                state.isLoading = true;
+                state.isLoading = true;   // dữ liệu đang được tải
             }
         })
 

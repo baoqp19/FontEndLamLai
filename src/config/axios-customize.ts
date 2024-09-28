@@ -15,7 +15,7 @@ interface AccessTokenResponse {
 
 const instance = axiosClient.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
-    withCredentials: true
+    withCredentials: true     
 });
 
 const mutex = new Mutex();

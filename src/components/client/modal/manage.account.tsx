@@ -18,25 +18,28 @@ const UserResume = (props: any) => {
     const [listCV, setListCV] = useState<IResume[]>([]);
     const [isFetching, setIsFetching] = useState<boolean>(false);
 
-    useEffect(() => {
-        const init = async () => {
-            setIsFetching(true);
-            const res = await callFetchResumeByUser();
-            if (res && res.data) {
-                setListCV(res.data.result as IResume[])
-            }
-            setIsFetching(false);
+
+    const init = async () => {
+        setIsFetching(true);
+        const res = await callFetchResumeByUser();
+        if (res && res.data) {
+            setListCV(res.data.result as IResume[])
         }
+        setIsFetching(false);
+    }
+
+
+    useEffect(() => {
         init();
     }, [])
-
+    
     const columns: ColumnsType<IResume> = [
         {
             title: "STT",
             key: 'index',
             width: 50,
             align: "center",
-            render: (index, record) => {
+            render: (text, record, index) => {
                 return (
                     <>
                         {(index + 1)}
@@ -105,7 +108,7 @@ const ManageAccount = (props: IProps) => {
     const items: TabsProps['items'] = [
         {
             key: 'user-resume',
-            label: `Rải CV`,
+            label: `Thông tin CV đã gửi`,
             children: <UserResume />,
         },
 
@@ -120,14 +123,11 @@ const ManageAccount = (props: IProps) => {
             children: `//todo`,
         },
     ];
-
-
-
     return (
         <>
             <Modal
                 title="Quản lý tài khoản"
-                open={open}
+                open={open}  // true thì mở
                 onCancel={() => onClose(false)}
                 maskClosable={false}  // nhấn ra ngoài thì khôg mất
                 footer={null}

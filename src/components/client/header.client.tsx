@@ -29,6 +29,7 @@ const Header = (props: any) => {
         setCurrent(location.pathname);
     }, [location]);
 
+    
     const items: MenuProps['items'] = [
         {
             label: <Link to={'/'}>Trang Chủ</Link>,
@@ -56,7 +57,8 @@ const Header = (props: any) => {
         if (res && res && +res.statusCode === 200) {
             dispatch(setLogoutAction({}));
             message.success('Đăng xuất thành công');
-            navivate('/')
+            // navivate('/')   // điều hướng không load lại trang
+            window.location.reload();
         }
     }
 
@@ -116,6 +118,8 @@ const Header = (props: any) => {
                                     {isAuthenticated === false ?
                                         <Link to={'/login'}>Đăng Nhập</Link>
                                         :
+
+                                        // nhấn thì hiện thị 
                                         <Dropdown menu={{ items: itemsDropdown }} trigger={['click']}>
                                             <Space style={{ cursor: "pointer" }}>
                                                 <span>Welcome {user?.name}</span>

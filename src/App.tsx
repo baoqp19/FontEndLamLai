@@ -21,13 +21,18 @@ import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { fetchAccount } from './redux/slice/accountSlice';
 
 
+
+
 const LayoutClient = () => {
+  
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const rootRef = useRef<HTMLDivElement>(null);
 
   // 1 hàm khi re-render thì lại tạo ra 1 môi trường mới và các giá trị ở trong đó sẽ trở lại ban đầu
   // useRef sinh ra để vẫn giữ được giá trị sau mỗi lần re-render. luôn có current
+
+
   useEffect(() => {
     if (rootRef && rootRef.current) {
       rootRef.current.scrollIntoView({ behavior: 'smooth' });

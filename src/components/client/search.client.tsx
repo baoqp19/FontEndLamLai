@@ -7,6 +7,10 @@ import { callFetchAllSkill } from '@/config/api';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 
+// khi submit form, lấy giá trị form ?location=fullstabk&skills=3,2
+// rồi gán các giá trị vào queryLocation and querySkills 
+
+
 const SearchClient = () => {
     const navigate = useNavigate();
     const location = useLocation();
