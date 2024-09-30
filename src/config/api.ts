@@ -30,6 +30,8 @@ export const callLogout = () => {
 /**
  * Upload single file
  */
+
+
 export const callUploadSingleFile = (file: any, folderType: string) => {
     const bodyFormData = new FormData();
     bodyFormData.append('file', file);

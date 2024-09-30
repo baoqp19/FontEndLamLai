@@ -8,7 +8,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { callLogout } from '@/config/api';
 import { setLogoutAction } from '@/redux/slice/accountSlice';
 import { isMobile } from 'react-device-detect';
-import ManageAccount from './modal/manage.account';
+import ManageAccount from './modal/ManageAcount';
 
 const Header = (props: any) => {
 

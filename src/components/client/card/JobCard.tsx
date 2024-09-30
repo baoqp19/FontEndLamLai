@@ -83,7 +83,8 @@ const JobCard = (props: IProps) => {
         if (pagination && pagination.current !== current) {
             setCurrent(pagination.current)
         }
-        if (pagination && pagination.pageSize !== pageSize) {
+
+        if(pagination && pagination.pageSize !== pageSize) {
             setPageSize(pagination.pageSize)
             setCurrent(1);
         }
@@ -91,11 +92,12 @@ const JobCard = (props: IProps) => {
     
 
     // khi bấm vào card thì http://localhost:3000/job/manual-tester-khoi-cntt?id=1
-    
     const handleViewDetailJob = (item: IJob) => {
         const slug = convertSlug(item.name);
         navigate(`/job/${slug}?id=${item.id}`)
     }
+
+
     return (
         <div className={`${styles["card-job-section"]}`}>
             <div className={`${styles["job-content"]}`}>

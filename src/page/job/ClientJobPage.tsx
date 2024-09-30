@@ -5,6 +5,7 @@ import SearchClient from '@/components/client/search.client'
 import JobCard from '@/components/client/card/JobCard'
 
 const ClientJobPage = () => {
+  
   return (
     <div className={styles["container"]} style={{ marginTop: 20 }}>
       <Row gutter={[20, 20]}>
