@@ -19,6 +19,8 @@ interface IProps {
 }
 
 
+
+
 const JobCard = (props: IProps) => {
 
     const { showPagination = false } = props;
@@ -86,7 +88,10 @@ const JobCard = (props: IProps) => {
             setCurrent(1);
         }
     }
+    
 
+    // khi bấm vào card thì http://localhost:3000/job/manual-tester-khoi-cntt?id=1
+    
     const handleViewDetailJob = (item: IJob) => {
         const slug = convertSlug(item.name);
         navigate(`/job/${slug}?id=${item.id}`)
@@ -125,12 +130,10 @@ const JobCard = (props: IProps) => {
                                                 <div className={styles["job-updatedAt"]}>{item.updatedAt ? dayjs(item.updatedAt).locale('en').fromNow() : dayjs(item.createdAt).locale('en').fromNow()}</div>
                                             </div>
                                         </div>
-
                                     </Card>
                                 </Col>
                             )
                         })}
-
                         {(!displayJob || displayJob && displayJob.length === 0)
                             && !isLoading &&
                             <div className={styles['empty']} >
@@ -150,7 +153,6 @@ const JobCard = (props: IProps) => {
                             />
                         </Row>
                     </>}
-
                 </Spin>
             </div>
         </div>

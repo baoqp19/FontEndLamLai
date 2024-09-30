@@ -4,12 +4,14 @@ import { message } from "antd";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+ // định nghĩa kiểu cho props.children
 interface IProps {
-    children: React.ReactNode
+    children: React.ReactNode 
 }
 
 
-
+// Token hết hạn và refresh token không thành công.
 const LayoutApp = (props: IProps) => {
     const isRefreshToken = useAppSelector(state => state.account.isRefreshToken);
     const errorRefreshToken = useAppSelector(state => state.account.errorRefreshToken);

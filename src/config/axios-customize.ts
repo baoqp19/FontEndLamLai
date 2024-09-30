@@ -50,10 +50,12 @@ instance.interceptors.request.use(function (config) {
  * Handle all responses. It is possible to add handlers
  * for requests, but it is omitted here for brevity.
  */
+
+
 instance.interceptors.response.use(
     (res) => res.data,
     async (error) => {
-        if (error.config && error.response
+        if (error.config && error.response 
             && +error.response.status === 401
             && error.config.url !== '/api/v1/auth/login'
             && !error.config.headers[NO_RETRY_HEADER]

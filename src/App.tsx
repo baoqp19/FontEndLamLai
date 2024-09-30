@@ -72,7 +72,7 @@ export default function App() {
       errorElement: <NotFound />,
       children: [
         { index: true, element: <HomePage /> },     // nhập / thì hiển thị ra 
-        { path: "job", element: <ClientJobPage /> },
+        { path: "job", element: <ClientJobPage /> },       
         { path: "job/:id", element: <ClientJobDetailPage /> },
         { path: "company", element: <ClientCompanyPage /> },
         { path: "company/:id", element: <ClientCompanyDetailPage /> }
