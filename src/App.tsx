@@ -9,12 +9,12 @@ import {
 import LoginPage from './page/auth/login';
 import RegisterPage from './page/auth/register';
 import NotFound from './components/share/not.found';
-import HomePage from './page/home/HomePage';
+import HomePage from './page/home';
 import Header from './components/client/header.client';
 import Footer from './components/client/footer.client';
 import LayoutApp from './components/share/layout.app';
-import ClientJobPage from './page/job/ClientJobPage';
-import ClientJobDetailPage from './page/job/DetailJob';
+import ClientJobPage from './page/job';
+import ClientJobDetailPage from './page/job/detail';
 import ClientCompanyPage from './page/company';
 import ClientCompanyDetailPage from './page/company/detail';
 import { useAppDispatch, useAppSelector } from './redux/hooks';

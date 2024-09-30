@@ -1,4 +1,4 @@
-import CompanyCard from '@/components/client/card/company.card';
+import CompanyCard from '@/components/client/card/CompanyCard';
 import JobCard from '@/components/client/card/JobCard';
 import SearchClient from '@/components/client/search.client';
 import { Divider } from 'antd';
