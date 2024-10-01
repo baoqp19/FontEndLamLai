@@ -1,12 +1,12 @@
 import {Action,configureStore,ThunkAction,
   } from '@reduxjs/toolkit';
   import accountReducer from './slice/accountSlice';
-  
+  import companyReducer from './slice/companySlide'
   
   export const store = configureStore({
     reducer: {
-      account: accountReducer
-      
+      account: accountReducer,
+      company: companyReducer,
     },
   });
   
