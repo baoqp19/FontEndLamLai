@@ -19,12 +19,18 @@ import ClientCompanyPage from './page/company';
 import ClientCompanyDetailPage from './page/company/detail';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { fetchAccount } from './redux/slice/accountSlice';
+import LayoutAdmin from './components/admin/layout.admin';
+import ProtectedRoute from './components/share/protected-route.ts';
+import DashboardPage from './page/admin/dashboard';
+import Layout from 'antd/es/layout/layout';
+import CompanyPage from './page/admin/company';
+import UserPage from './page/admin/user';
 
 
 
 
 const LayoutClient = () => {
-  
+
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -72,32 +78,39 @@ export default function App() {
       errorElement: <NotFound />,
       children: [
         { index: true, element: <HomePage /> },     // nhập / thì hiển thị ra 
-        { path: "job", element: <ClientJobPage /> },       
+        { path: "job", element: <ClientJobPage /> },
         { path: "job/:id", element: <ClientJobDetailPage /> },
         { path: "company", element: <ClientCompanyPage /> },
         { path: "company/:id", element: <ClientCompanyDetailPage /> }
       ],
     },
 
+    
     {
       path: "/admin",
-      // element: <LayoutAdmin />,
+      element: (<LayoutApp> <LayoutAdmin /> </LayoutApp>),
       errorElement: <NotFound />,
       children: [
-        // {
-        //   index: true, element:
-        //     <ProtectedRoute>
-        //       <AdminPage />
-        //     </ProtectedRoute>
-        // },
-        // {
-        //   path: "user",
-        //   element:
-        //     <ProtectedRoute>
-        //       <ManageUserPage />
-        //     </ProtectedRoute>
-        //   ,
-        // },
+        {
+          index: true, element:
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+        },
+        {
+          path: "company",
+          element:
+            <ProtectedRoute>
+              <CompanyPage />
+            </ProtectedRoute>
+        },
+        {
+          path: "user",
+          element:
+            <ProtectedRoute>
+              <UserPage />
+            </ProtectedRoute>
+        },
       ],
     },
 

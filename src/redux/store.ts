@@ -6,6 +6,7 @@ import {Action,configureStore,ThunkAction,
   export const store = configureStore({
     reducer: {
       account: accountReducer
+      
     },
   });
   
