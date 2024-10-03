@@ -90,6 +90,7 @@ const CompanyPage = () => {
             title: 'Actions',
             hideInSearch: true,
             width: 50,
+            // entity, record giống nhau, entity: dữ liệu ở datasourse 
             render: (_value, entity, _index, _action) => (
                 <Space>
                     < Access

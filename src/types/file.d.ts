@@ -1,4 +1,6 @@
 import axios from 'axios'
+
+// cung cấp kiểu cho các thư viện mà mặc định không có hỗ trợ TypeScript.
 declare module '*.mp4' {
     export default string;
 }
@@ -10,6 +12,7 @@ declare module '*.png' {
 declare module '*.xlsx' {
     export default string;
 }
+
 
 
 declare module '*.xlsm' {
