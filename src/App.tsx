@@ -25,6 +25,12 @@ import DashboardPage from './page/admin/dashboard';
 import Layout from 'antd/es/layout/layout';
 import CompanyPage from './page/admin/company';
 import UserPage from './page/admin/user';
+import JobTabs from './page/admin/job/job.tabs';
+import ViewUpsertJob from './components/admin/job/upsert.job';
+import ResumePage from './page/admin/resume';
+import PermissionPage from './page/admin/permission';
+import RolePage from './page/admin/role';
+
 
 
 
@@ -85,7 +91,7 @@ export default function App() {
       ],
     },
 
-    
+
     {
       path: "/admin",
       element: (<LayoutApp> <LayoutAdmin /> </LayoutApp>),
@@ -111,6 +117,40 @@ export default function App() {
               <UserPage />
             </ProtectedRoute>
         },
+        {
+          path: "job",
+          children: [
+            {
+              index: true,
+              element: <ProtectedRoute><JobTabs /></ProtectedRoute>
+            },
+            {
+              path: "upsert", element:
+                <ProtectedRoute><ViewUpsertJob /></ProtectedRoute>
+            }
+          ]
+        },
+        {
+          path: "resume",
+          element:
+            <ProtectedRoute>
+              <ResumePage />
+            </ProtectedRoute>
+        },
+        {
+          path: "permission",
+          element:
+            <ProtectedRoute>
+              <PermissionPage />
+            </ProtectedRoute>
+        },
+        {
+          path: "role",
+          element:
+            <ProtectedRoute>
+              <RolePage />
+            </ProtectedRoute>
+        }
       ],
     },
 

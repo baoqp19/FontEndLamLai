@@ -17,3 +17,4 @@ const ClientCompanyPage = () => {
 }
 
 export default ClientCompanyPage
+
