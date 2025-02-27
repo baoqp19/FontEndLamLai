@@ -1,3 +1,5 @@
+
+
 $color-white: #ffffff;
 $color-light: #d1dfed;
 $color-black: #121212;
@@ -17,7 +19,9 @@ $shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0,
 .register-page{
 
     color: $color-black;
-    background: $color-light;  // background bao gồm nhiều background khác
+    background: url('white.jpg') no-repeat; 
+    background-size: cover;
+    background-position: center;
 
 
 
@@ -67,12 +71,13 @@ $shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0,
             max-width: 28rem;  // giới hạn
             margin: 2rem auto;
             padding: 2rem 2.5rem;
-            border: none;
+            border: 2px solid rgba(255, 255, 255, .2);
             outline: none;
             border-radius: 0.5rem;
             color: $color-black;
-            background: $color-black;
-            box-shadow: $shadow-large;
+            backdrop-filter: blur(20px); 
+            background: transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 
             .form{
                 width: 100%;

@@ -27,7 +27,7 @@ const LoginPage = () => {
 
 
     useEffect(() => {
-        if(isAuthenticated){
+        if (isAuthenticated) {
             window.location.href = '/'
         }
     }, [isAuthenticated])
@@ -80,7 +80,7 @@ const LoginPage = () => {
                                 name="username"
                                 rules={[{ required: true, message: 'Email không được để trống!' }]}
                             >
-                                <Input />
+                                <Input style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
                             <Form.Item
@@ -89,7 +89,7 @@ const LoginPage = () => {
                                 name="password"
                                 rules={[{ required: true, message: 'Mật khẩu không được để trống!' }]}
                             >
-                                <Input.Password />
+                                <Input.Password style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
                             <Form.Item>

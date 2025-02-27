@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 // cung cấp kiểu cho các thư viện mà mặc định không có hỗ trợ TypeScript.
+// * để dánh dấu là đuôi file 
 declare module '*.mp4' {
     export default string;
 }
@@ -23,6 +24,8 @@ declare module '*.csv' {
     export default string;
 }
 
+
+// các thư viện bên ngoài mà TS không biết
 declare module 'react-icons/*';
 
 declare module 'uuid';
@@ -31,6 +34,7 @@ declare module 'lodash';
 
 
 // https://github.com/axios/axios/issues/1510#issuecomment-448201698
+// AxiosResponse cho intercepter
 declare module 'axios' {
     export interface AxiosResponse<T = any> extends Promise<T> { }
 }

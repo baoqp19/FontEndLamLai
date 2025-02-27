@@ -54,7 +54,7 @@ const RegisterPage = () => {
                                 name="name"
                                 rules={[{ required: true, message: 'Họ tên không được để trống!' }]}
                             >
-                                <Input />
+                                <Input style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
 
@@ -65,7 +65,7 @@ const RegisterPage = () => {
                                 name="email"
                                 rules={[{ required: true, message: 'Email không được để trống!' }]}
                             >
-                                <Input type='email' />
+                                <Input type='email' style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
                             <Form.Item
@@ -74,7 +74,7 @@ const RegisterPage = () => {
                                 name="password"
                                 rules={[{ required: true, message: 'Mật khẩu không được để trống!' }]}
                             >
-                                <Input.Password />
+                                <Input.Password style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
                             <Form.Item
                                 labelCol={{ span: 24 }} //whole column
@@ -82,7 +82,7 @@ const RegisterPage = () => {
                                 name="age"
                                 rules={[{ required: true, message: 'Tuổi không được để trống!' }]}
                             >
-                                <Input type='number' />
+                                <Input type='number' style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
 
@@ -96,7 +96,9 @@ const RegisterPage = () => {
                                     // placeholder="Select a option and change input text above"
                                     // onChange={onGenderChange}
                                     allowClear
+                                    style={{ backgroundColor: "transparent", color: "white" }} // Làm trong suốt nền Select và màu chữ
                                 >
+                                    
                                     <Option value="MALE">Nam</Option>
                                     <Option value="FEMALE">Nữ</Option>
                                     <Option value="OTHER">Khác</Option>
@@ -110,7 +112,7 @@ const RegisterPage = () => {
                                 name="address"
                                 rules={[{ required: true, message: 'Địa chỉ không được để trống!' }]}
                             >
-                                <Input />
+                                <Input style={{ backgroundColor: "transparent" }} />
                             </Form.Item>
 
                             < Form.Item

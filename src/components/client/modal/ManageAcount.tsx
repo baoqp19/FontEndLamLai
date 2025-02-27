@@ -32,7 +32,7 @@ const UserResume = (props: any) => {
     useEffect(() => {
         init();
     }, [])
-    
+
     const columns: ColumnsType<IResume> = [
         {
             title: "STT",
@@ -110,19 +110,9 @@ const ManageAccount = (props: IProps) => {
             key: 'user-resume',
             label: `Thông tin CV đã gửi`,
             children: <UserResume />,
-        },
-
-        {
-            key: 'user-update-info',
-            label: `Cập nhật thông tin`,
-            children: "//todo",
-        },
-        {
-            key: 'user-password',
-            label: `Thay đổi mật khẩu`,
-            children: `//todo`,
-        },
+        }
     ];
+
     return (
         <>
             <Modal

@@ -14,15 +14,16 @@ interface AccessTokenResponse {
  */
 
 const instance = axiosClient.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL as string,
-    withCredentials: true     
+    baseURL: import.meta.env.VITE_BACKEND_URL as string,    
+    withCredentials: true      // các request gửi tới server phải bao gồm các thông tin xác thực
 });
+
 
 const mutex = new Mutex();
 const NO_RETRY_HEADER = 'x-no-retry';
 
-
-// khi ta refreshtoken thì chỉ refresh các yêu cầu khác thì không thực hiện 
+// mutex: khoá 
+// Tức là, khi một yêu cầu đang refresh token, các yêu cầu khác sẽ phải chờ.
 const handleRefreshToken = async (): Promise<string | null> => {
     return await mutex.runExclusive(async () => {
         const res = await instance.get<IBackendRes<AccessTokenResponse>>('/api/v1/auth/refresh');
@@ -32,7 +33,9 @@ const handleRefreshToken = async (): Promise<string | null> => {
 };
 
 
-// trước khi gửi yêu cầu 
+// Axios cho phép bạn can thiệp vào các yêu cầu trước khi chúng được gửi đến server
+// window: chạy trên môi trường trình duyệt 
+// khi login thì đã có token trong localStorage 
 instance.interceptors.request.use(function (config) {
     if (typeof window !== "undefined" && window && window.localStorage && window.localStorage.getItem('access_token')) {
         config.headers.Authorization = 'Bearer ' + window.localStorage.getItem('access_token');

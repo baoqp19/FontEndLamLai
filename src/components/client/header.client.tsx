@@ -29,7 +29,7 @@ const Header = (props: any) => {
         setCurrent(location.pathname);
     }, [location]);
 
-    
+
     const items: MenuProps['items'] = [
         {
             label: <Link to={'/'}>Trang Chủ</Link>,

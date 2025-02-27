@@ -1,21 +1,23 @@
+import { FooterToolbar, ModalForm, ProCard, ProFormSwitch, ProFormText, ProFormTextArea } from "@ant-design/pro-components";
+import { Col, Form, Row, message, notification } from "antd";
+import { isMobile } from 'react-device-detect';
 import { callCreateRole, callFetchPermission, callUpdateRole } from "@/config/api";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { resetSingleRole } from "@/redux/slice/roleSlide";
 import { IPermission } from "@/types/backend";
 import { CheckSquareOutlined } from "@ant-design/icons";
-import { FooterToolbar, ModalForm, ProCard, ProFormSwitch, ProFormText, ProFormTextArea } from "@ant-design/pro-components";
-import { Col, Form, message, notification, Row } from "antd";
-import { groupBy, map } from "lodash";
-import { useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
 import ModuleApi from "./module.api";
-
+import { useState, useEffect } from 'react';
+import groupBy from 'lodash/groupBy';
+import map from 'lodash/map';
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { resetSingleRole } from "@/redux/slice/roleSlide";
+import 'styles/reset.scss'
 
 interface IProps {
     openModal: boolean;
     setOpenModal: (v: boolean) => void;
     reloadTable: () => void;
 }
+
 
 
 const ModalRole = (props: IProps) => {
@@ -26,11 +28,11 @@ const ModalRole = (props: IProps) => {
 
     const [form] = Form.useForm();
 
+    //all backend permissions
     const [listPermissions, setListPermissions] = useState<{
         module: string;
         permissions: IPermission[]
     }[] | null>(null);
-
 
     const groupByPermission = (data: any[]): { module: string; permissions: IPermission[] }[] => {
         const groupedData = groupBy(data, x => x.module);
@@ -131,11 +133,6 @@ const ModalRole = (props: IProps) => {
         dispatch(resetSingleRole({}));
     }
 
-
-
-
-
-
     return (
         <>
             <ModalForm
@@ -154,8 +151,9 @@ const ModalRole = (props: IProps) => {
                 preserve={false}
                 form={form}
                 onFinish={submitRole}
+
                 submitter={{
-                    render: (_: any, dom: any) => <FooterToolbar>{dom}</FooterToolbar>,
+                    render: (_: any, dom: any) => <FooterToolbar style={{ zIndex: "1000", background: 'white' }} >{dom}</FooterToolbar>,
                     submitButtonProps: {
                         icon: <CheckSquareOutlined />
                     },
@@ -165,9 +163,8 @@ const ModalRole = (props: IProps) => {
                     }
                 }}
             >
-
-                <Row>
-                <Col lg={12} md={12} sm={24} xs={24}>
+                <Row gutter={16}>
+                    <Col lg={12} md={12} sm={24} xs={24}>
                         <ProFormText
                             label="Tên Role"
                             name="name"
@@ -211,20 +208,16 @@ const ModalRole = (props: IProps) => {
                             size="small"
                             bordered
                         >
-                             <ModuleApi
+                            <ModuleApi
                                 form={form}
                                 listPermissions={listPermissions}
-                            /> 
-                            
+                            />
                         </ProCard>
-
                     </Col>
                 </Row>
-
-
             </ModalForm>
         </>
     )
 }
 
-export default ModalRole
+export default ModalRole;
